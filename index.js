@@ -1,18 +1,13 @@
-
 const d=document;
 const $formulario= d.getElementById("formulario");
-
 $formulario.addEventListener('submit',introduciendo);
-
 d.addEventListener('DOMContentLoaded',render)
-
+// add task
 function introduciendo(e){
     e.preventDefault();
     let $tarea=d.getElementById('tarea').value;
     let $descripcion=d.getElementById('descripcion').value;
-    
     if($tarea===''||$descripcion===''){
-        
     }else{
     let tarea={
         $tarea,
@@ -31,7 +26,7 @@ function introduciendo(e){
     $formulario.reset();
     }
 }
-
+//render the view
 function render(){
     let $tbody=d.querySelector('tbody');
     let fragmento=d.createDocumentFragment();
@@ -56,7 +51,7 @@ function render(){
     });
     $tbody.appendChild(fragmento);
 }
-
+//delete a task
 function borrar(e){
     let tr=e.target.parentNode.parentNode;
     let tareas=JSON.parse(localStorage.getItem('tareas'));
@@ -67,5 +62,4 @@ function borrar(e){
         localStorage.setItem('tareas',JSON.stringify(tareas));
     }
     render();
-
 }
